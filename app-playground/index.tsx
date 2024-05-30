@@ -5,7 +5,7 @@ import StaticImage from "@/components/custom/StaticImage";
 import NetworkImage from "@/components/custom/NetworkImage";
 import LineBreak from "@/components/custom/LineBreak";
 import { PaperProvider } from "react-native-paper";
-import MyBottomNavigation from "@/components/custom/MyBottomNavigation";
+import ExampleBottomNavigation from "@/components/ExampleBottomNavigation";
 
 export default function Index() {
   return (
@@ -18,7 +18,7 @@ export default function Index() {
         }}
       >
         <ScrollView>
-          <MyBottomNavigation style={{ top: "80%" }} />
+          <ExampleBottomNavigation />
           <Text>Hello world!!!! :)</Text>
           <LineBreak />
           <Text>Below is a counting button with useState and useEffect!</Text>
