@@ -1,30 +1,36 @@
-import {Text, View} from "react-native";
+import { ScrollView, Text, View } from "react-native";
 import CounterButton from "@/components/custom/CounterButton";
 import LongText from "@/components/custom/LongText";
 import StaticImage from "@/components/custom/StaticImage";
 import NetworkImage from "@/components/custom/NetworkImage";
+import LineBreak from "@/components/custom/LineBreak";
 
 export default function Index() {
-    return (
-        <View
-            style={{
-                flex: 1,
-                justifyContent: "center",
-                alignItems: "center",
-            }}
-        >
-            <Text>Hello world!</Text>
-            <Text>Below is a counting button with useState and useEffect!</Text>
-            <CounterButton/>
-            <LongText/>
-            <Text>{"\n"}{"\n"}</Text>
-            <Text>I imported this image from a static file.{"\n"}
-                  Its touchable on Short and Long Press events!</Text>
-            <StaticImage/>
-            <Text>{"\n"}{"\n"}</Text>
-            <Text>I imported this image from the network!</Text>
-            <NetworkImage/>
-        </View>
-    )
-        ;
+  return (
+    <View
+      style={{
+        flex: 1,
+        justifyContent: "center",
+        alignItems: "center",
+      }}
+    >
+      <ScrollView>
+        <Text>Hello world!</Text>
+        <LineBreak />
+        <Text>Below is a counting button with useState and useEffect!</Text>
+        <CounterButton />
+        <LineBreak />
+        <LongText />
+        <LineBreak />
+        <Text>
+          I imported this image from a static file.{"\n"}
+          Its touchable on Short and Long Press events!
+        </Text>
+        <StaticImage />
+        <LineBreak />
+        <Text>I imported this image from the network!</Text>
+        <NetworkImage />
+      </ScrollView>
+    </View>
+  );
 }
