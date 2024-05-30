@@ -1,23 +1,33 @@
 import { useState } from "react";
-import { Text } from "react-native";
+import { Text, StyleSheet } from "react-native";
 import { BottomNavigation } from "react-native-paper";
 
-const MusicRoute = () => <Text>Music</Text>;
-const AlbumsRoute = () => <Text>Albums</Text>;
-const RecentsRoute = () => <Text>Recents</Text>;
+const HomeRoute = () => <Text>Home</Text>;
+const GamesRoute = () => <Text>Games</Text>;
+const StatisticsRoute = () => <Text>Statistics</Text>;
 const NotificationsRoute = () => <Text>Notifications</Text>;
 
-const MyBottomNavigation = ({ style }) => {
+const MyBottomNavigation = () => {
   const [index, setIndex] = useState(0);
   const [routes, setRoutes] = useState([
     {
-      key: "music",
-      title: "Favorites",
-      focusedIcon: "heart",
-      unfocusedIcon: "heart-outline",
+      key: "home",
+      title: "Home",
+      focusedIcon: "home",
+      unfocusedIcon: "home-outline",
     },
-    { key: "albums", title: "Albums", focusedIcon: "album" },
-    { key: "recents", title: "Recents", focusedIcon: "history" },
+    {
+      key: "games",
+      title: "Games",
+      focusedIcon: "clipboard-list",
+      unfocusedIcon: "clipboard-list-outline",
+    },
+    {
+      key: "statistics",
+      title: "Statistics",
+      focusedIcon: "chart-box",
+      unfocusedIcon: "chart-box-outline",
+    },
     {
       key: "notifications",
       title: "Notifications",
@@ -27,10 +37,14 @@ const MyBottomNavigation = ({ style }) => {
   ]);
 
   const renderScene = BottomNavigation.SceneMap({
-    music: MusicRoute,
-    albums: AlbumsRoute,
-    recents: RecentsRoute,
+    home: HomeRoute,
+    games: GamesRoute,
+    statistics: StatisticsRoute,
     notifications: NotificationsRoute,
+  });
+
+  const style = StyleSheet.create({
+    style: { position: "absolute", bottom: 0, width: "100%" },
   });
 
   return (
@@ -38,7 +52,7 @@ const MyBottomNavigation = ({ style }) => {
       navigationState={{ index, routes }}
       onIndexChange={setIndex}
       renderScene={renderScene}
-      style={style}
+      style={style.style}
     />
   );
 };

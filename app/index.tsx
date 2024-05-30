@@ -1,9 +1,10 @@
-import { Text, View } from "react-native";
+import { View } from "react-native";
+import MyBottomNavigation from "@/components/custom/MyBottomNavigation";
 
 export default function Index() {
   return (
-    <View>
-      <Text>Edit app/index.tsx to edit this screen.</Text>
+    <View style={{ flex: 1 }}>
+      <MyBottomNavigation />
     </View>
   );
 }
