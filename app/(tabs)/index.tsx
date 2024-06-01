@@ -1,10 +1,11 @@
-import { Text, View } from "react-native";
-import { useEffect } from "react";
+import Background from "@/components/custom/Gradient";
+import { View } from "react-native";
+import styles from "@/components/custom/Style";
 
 export default function HomePage() {
   return (
-    <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
-      <Text>Welcome to the Home Page!</Text>
+    <View style={styles.container}>
+      <Background />
     </View>
   );
 }
