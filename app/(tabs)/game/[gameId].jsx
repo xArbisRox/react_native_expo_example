@@ -1,15 +1,13 @@
-import React from "react";
-
 import { Text, View } from "react-native";
 import { useLocalSearchParams } from "expo-router";
 
-const GamesPage = () => {
-  const { teamId } = useLocalSearchParams();
+const GamePage = () => {
+  const { gameId } = useLocalSearchParams();
   return (
     <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
-      <Text>Welcome to the Games Page for Team {teamId}!</Text>
+      <Text>Welcome to the Game Page for Game {gameId}!</Text>
     </View>
   );
 };
 
-export default GamesPage;
+export default GamePage;

@@ -4,10 +4,9 @@ import { Text, View } from "react-native";
 import { useLocalSearchParams } from "expo-router";
 
 const GamesPage = () => {
-  const { team_id } = useLocalSearchParams();
-    return (
-    <View>
-      <Text>Welcome to the Games Page for Team {team_id}!</Text>
+  return (
+    <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
+      <Text>Welcome to the default Team Page!</Text>
     </View>
   );
 };

@@ -1,6 +1,6 @@
 import React from "react";
 import { createMaterialBottomTabNavigator } from "react-native-paper/react-navigation";
-import GamesPage from "../../app/backup/games/[team_id]";
+import GamesPage from "../../app/(tabs)/games/[team_id]";
 import StatisticsPage from "../../app/backup/statistics/[game_id]";
 import NotificationsPage from "../../app/backup/notifications/[id]";
 

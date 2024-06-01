@@ -22,14 +22,26 @@ export default function MyTabs() {
         }}
       />
       <Tabs.Screen
-        name="[teamId]"
+        name="team"
         options={{
-          href: "/12",
+          href: "/team",
           title: "Games",
           tabBarLabel: "Games",
           tabBarLabelStyle: style.tabBarLabel,
           tabBarIcon: ({ focused, color, size }) => (
             <FontAwesome name="list-alt" size={24} color="black" />
+          ),
+        }}
+      />
+      <Tabs.Screen
+        name="game"
+        options={{
+          href: "/game",
+          title: "Statistics",
+          tabBarLabel: "Statistics",
+          tabBarLabelStyle: style.tabBarLabel,
+          tabBarIcon: ({ focused, color, size }) => (
+            <FontAwesome name="pie-chart" size={24} color="black" />
           ),
         }}
       />
