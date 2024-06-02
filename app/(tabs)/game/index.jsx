@@ -5,14 +5,16 @@ import CustomPyramidChart from "@/components/custom/game/charts/examples/CustomP
 import CustomBarChart from "@/components/custom/game/charts/examples/CustomBarChart";
 import baseStyles from "@/components/custom/Style";
 import Background from "@/components/custom/Gradient";
+import CustomStackedBarChart from "../../../components/custom/game/charts/examples/CustomStackedBarChart";
 
 const GamePage = () => {
   return (
     <View style={baseStyles.container}>
       <Background />
-      <ScrollView contentContainerStyle={{alignItems: "center", gap: 35}}>
+      <ScrollView contentContainerStyle={{ alignItems: "center", gap: 35 }}>
         <Text>Welcome to the default Game Page!</Text>
         <CustomBarChart />
+        <CustomStackedBarChart />
         <CustomLineChart />
         <CustomPieChart />
         <CustomPyramidChart />
