@@ -1,4 +1,5 @@
 import { BarChart } from "react-native-gifted-charts";
+import { useState } from "react";
 
 const colorMapper = {
   first: "red",
@@ -13,8 +14,16 @@ const colorMapper = {
   tenth: "grey",
 };
 
+function sortByStackSum(data) {
+  return data.sort((a, b) => {
+    const sumA = a.stacks.reduce((acc, curr) => acc + curr.value, 0);
+    const sumB = b.stacks.reduce((acc, curr) => acc + curr.value, 0);
+    return sumB - sumA; // Descending order (highest sum first)
+  });
+}
+
 // 14 example player data
-const stackData = [
+const data = [
   {
     stacks: [
       { value: 1, color: colorMapper["first"] },
@@ -243,7 +252,15 @@ const stackData = [
 ];
 
 const CustomStackedBarChart = () => {
-  return <BarChart stackData={stackData} rotateLabel barWidth={16} barBorderRadius={5} />;
+  const [stackData, setStackData] = useState(sortByStackSum(data));
+  return (
+    <BarChart
+      stackData={stackData}
+      rotateLabel
+      barWidth={16}
+      barBorderRadius={5}
+    />
+  );
 };
 
 export default CustomStackedBarChart;
