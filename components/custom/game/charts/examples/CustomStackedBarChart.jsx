@@ -1,3 +1,4 @@
+import { View, Text } from "react-native";
 import { BarChart } from "react-native-gifted-charts";
 import { useState } from "react";
 
@@ -14,10 +15,14 @@ const colorMapper = {
   tenth: "grey",
 };
 
+function sumStack(stack) {
+ return stack.reduce((acc, curr) => acc + curr.value, 0)
+}
+
 function sortByStackSum(data) {
   return data.sort((a, b) => {
-    const sumA = a.stacks.reduce((acc, curr) => acc + curr.value, 0);
-    const sumB = b.stacks.reduce((acc, curr) => acc + curr.value, 0);
+    const sumA = sumStack(a.stacks);
+    const sumB = sumStack(b.stacks);
     return sumB - sumA; // Descending order (highest sum first)
   });
 }
@@ -146,13 +151,13 @@ const data = [
   },
   {
     stacks: [
-      { value: 10, color: colorMapper["first"] },
-      { value: 9, color: colorMapper["second"] },
-      { value: 8, color: colorMapper["third"] },
+      { value: 1, color: colorMapper["first"] },
+      { value: 4, color: colorMapper["second"] },
+      { value: 4, color: colorMapper["third"] },
       { value: 7, color: colorMapper["fourth"] },
-      { value: 6, color: colorMapper["fifth"] },
+      { value: 4, color: colorMapper["fifth"] },
       { value: 5, color: colorMapper["sixth"] },
-      { value: 4, color: colorMapper["seventh"] },
+      { value: 1, color: colorMapper["seventh"] },
       { value: 3, color: colorMapper["eighth"] },
       { value: 2, color: colorMapper["ninth"] },
       { value: 1, color: colorMapper["tenth"] },
@@ -162,28 +167,28 @@ const data = [
   {
     stacks: [
       { value: 5, color: colorMapper["first"] },
-      { value: 5, color: colorMapper["second"] },
+      { value: 2, color: colorMapper["second"] },
       { value: 5, color: colorMapper["third"] },
       { value: 5, color: colorMapper["fourth"] },
-      { value: 5, color: colorMapper["fifth"] },
-      { value: 6, color: colorMapper["sixth"] },
+      { value: 3, color: colorMapper["fifth"] },
+      { value: 2, color: colorMapper["sixth"] },
       { value: 6, color: colorMapper["seventh"] },
-      { value: 6, color: colorMapper["eighth"] },
+      { value: 1, color: colorMapper["eighth"] },
       { value: 6, color: colorMapper["ninth"] },
-      { value: 6, color: colorMapper["tenth"] },
+      { value: 1, color: colorMapper["tenth"] },
     ],
     label: "Flat Plateau",
   },
   {
     stacks: [
       { value: 1, color: colorMapper["first"] },
-      { value: 3, color: colorMapper["second"] },
-      { value: 5, color: colorMapper["third"] },
+      { value: 13, color: colorMapper["second"] },
+      { value: 15, color: colorMapper["third"] },
       { value: 7, color: colorMapper["fourth"] },
       { value: 9, color: colorMapper["fifth"] },
       { value: 7, color: colorMapper["sixth"] },
       { value: 5, color: colorMapper["seventh"] },
-      { value: 3, color: colorMapper["eighth"] },
+      { value: 13, color: colorMapper["eighth"] },
       { value: 1, color: colorMapper["ninth"] },
       { value: 10, color: colorMapper["tenth"] },
     ],
@@ -194,7 +199,7 @@ const data = [
       { value: 4, color: colorMapper["first"] },
       { value: 8, color: colorMapper["second"] },
       { value: 2, color: colorMapper["third"] },
-      { value: 6, color: colorMapper["fourth"] },
+      { value: 16, color: colorMapper["fourth"] },
       { value: 10, color: colorMapper["fifth"] },
       { value: 1, color: colorMapper["sixth"] },
       { value: 5, color: colorMapper["seventh"] },
@@ -210,9 +215,9 @@ const data = [
       { value: 4, color: colorMapper["second"] },
       { value: 6, color: colorMapper["third"] },
       { value: 8, color: colorMapper["fourth"] },
-      { value: 10, color: colorMapper["fifth"] },
-      { value: 8, color: colorMapper["sixth"] },
-      { value: 6, color: colorMapper["seventh"] },
+      { value: 1, color: colorMapper["fifth"] },
+      { value: 2, color: colorMapper["sixth"] },
+      { value: 1, color: colorMapper["seventh"] },
       { value: 4, color: colorMapper["eighth"] },
       { value: 2, color: colorMapper["ninth"] },
       { value: 1, color: colorMapper["tenth"] },
@@ -236,15 +241,15 @@ const data = [
   },
   {
     stacks: [
-      { value: 10, color: colorMapper["first"] },
+      { value: 1, color: colorMapper["first"] },
       { value: 1, color: colorMapper["second"] },
-      { value: 10, color: colorMapper["third"] },
+      { value: 1, color: colorMapper["third"] },
       { value: 1, color: colorMapper["fourth"] },
-      { value: 10, color: colorMapper["fifth"] },
+      { value: 1, color: colorMapper["fifth"] },
       { value: 1, color: colorMapper["sixth"] },
-      { value: 10, color: colorMapper["seventh"] },
+      { value: 1, color: colorMapper["seventh"] },
       { value: 1, color: colorMapper["eighth"] },
-      { value: 10, color: colorMapper["ninth"] },
+      { value: 1, color: colorMapper["ninth"] },
       { value: 1, color: colorMapper["tenth"] },
     ],
     label: "Alternating Peaks",
@@ -259,6 +264,16 @@ const CustomStackedBarChart = () => {
       rotateLabel
       barWidth={16}
       barBorderRadius={5}
+      isAnimated
+      renderTooltip={(item, index) => {
+        return (
+          <View style={{ padding: 10, backgroundColor: "white" }}>
+            <Text style={{ color: "black" }}>
+              {item.label} - Overall {sumStack(item.stacks)} Goals
+            </Text>
+          </View>
+        );
+      }}
     />
   );
 };
