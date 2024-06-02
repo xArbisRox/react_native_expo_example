@@ -4,7 +4,7 @@ import { StyleSheet, View } from "react-native";
 import { useTheme } from "react-native-paper";
 import Background from "../../../components/custom/Gradient";
 import CustomDropdown from "../../../components/custom/Dropdown";
-import CustomCheckbox from "../../../components/custom/Checkbox";
+// import CustomCheckbox from "../../../components/custom/Checkbox";
 import GamesDataTable from "../../../components/custom/team/GamesDataTable";
 import baseStyles from "@/components/custom/Style";
 
@@ -19,9 +19,10 @@ const GamesPage = () => {
       flexDirection: "row",
       justifyContent: "space-around",
     },
-    seasonSelect: {
-      flexBasis: "35%",
+    selectDropdown: {
+      flexBasis: "35%", // not correctly passed to CustomDropdown
     },
+/*
     checkboxContainer: {
       flexBasis: "35%",
       flexDirection: "row",
@@ -29,6 +30,7 @@ const GamesPage = () => {
       alignItems: "center",
       backgroundColor: theme.colors.surface,
     },
+*/
   });
 
   // Dropdown section
@@ -47,11 +49,26 @@ const GamesPage = () => {
     },
   ];
   const [season, setSeason] = useState("2023");
-  const [showDropDown, setShowDropDown] = useState(false);
+  const [showSeasonDropDown, setShowSeasonDropDown] = useState(false);
 
   // Checkbox section
-  const [playChecked, setPlayChecked] = useState(false);
-  const [multipleChecked, setMultipleChecked] = useState(false);
+  const teamList = [
+    {
+      label: "TSG Münster I",
+      value: "id_12345",
+    },
+    {
+      label: "TSG Münster II",
+      value: "id_54321",
+    },
+    {
+      label: "TSG Münster III",
+      value: "id_67890",
+    },
+  ];
+
+  const [team, setTeam] = useState("id_12345");
+  const [showTeamDropdown, setShowTeamDropdown] = useState(false);
 
   return (
     <View style={[baseStyles.container, { justifyContent: "start" }]}>
@@ -60,26 +77,25 @@ const GamesPage = () => {
         <CustomDropdown
           label="Season"
           mode="outline"
-          visible={showDropDown}
-          showDropDown={() => setShowDropDown(true)}
-          onDismiss={() => setShowDropDown(false)}
+          visible={showSeasonDropDown}
+          showDropDown={() => setShowSeasonDropDown(true)}
+          onDismiss={() => setShowSeasonDropDown(false)}
           value={season}
           setValue={setSeason}
           list={seasonList}
-          style={styles.seasonSelect}
+          style={styles.selectDropdown}
         />
-        <View style={styles.checkboxContainer}>
-          <CustomCheckbox
-            label={"Multiple?"}
-            checked={multipleChecked}
-            setChecked={setMultipleChecked}
-          />
-          <CustomCheckbox
-            label={"Played?"}
-            checked={playChecked}
-            setChecked={setPlayChecked}
-          />
-        </View>
+        <CustomDropdown
+            label="Team"
+            mode="outline"
+            visible={showTeamDropdown}
+            showDropDown={() => setShowTeamDropdown(true)}
+            onDismiss={() => setShowTeamDropdown(false)}
+            value={team}
+            setValue={setTeam}
+            list={teamList}
+            style={styles.selectDropdown}
+          ></CustomDropdown>
       </View>
       <GamesDataTable />
     </View>
