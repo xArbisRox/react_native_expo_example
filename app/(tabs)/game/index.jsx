@@ -6,13 +6,14 @@ import CustomBarChart from "@/components/custom/game/charts/examples/CustomBarCh
 import baseStyles from "@/components/custom/Style";
 import Background from "@/components/custom/Gradient";
 import CustomStackedBarChart from "../../../components/custom/game/charts/examples/CustomStackedBarChart";
+import CustomSegmentedButton from "../../../components/custom/game/CustomSegmentedButton";
 
 const GamePage = () => {
   return (
     <View style={baseStyles.container}>
       <Background />
+      <CustomSegmentedButton />
       <ScrollView contentContainerStyle={{ alignItems: "center", gap: 35 }}>
-        <Text>Welcome to the default Game Page!</Text>
         <CustomBarChart />
         <CustomStackedBarChart />
         <CustomLineChart />
