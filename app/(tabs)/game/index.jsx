@@ -7,11 +7,14 @@ import baseStyles from "@/components/custom/Style";
 import Background from "@/components/custom/Gradient";
 import CustomStackedBarChart from "../../../components/custom/game/charts/examples/CustomStackedBarChart";
 import CustomSegmentedButton from "../../../components/custom/game/CustomSegmentedButton";
+import SelectAndChartView from "@/components/custom/game/SelectAndChartView";
 
 const GamePage = () => {
   return (
     <View style={baseStyles.container}>
       <Background />
+      <SelectAndChartView />
+      {/*
       <CustomSegmentedButton />
       <ScrollView contentContainerStyle={{ alignItems: "center", gap: 35 }}>
         <CustomBarChart />
@@ -20,6 +23,7 @@ const GamePage = () => {
         <CustomPieChart />
         <CustomPyramidChart />
       </ScrollView>
+*/}
     </View>
   );
 };

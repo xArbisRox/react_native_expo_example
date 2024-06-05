@@ -12,17 +12,10 @@ const GamesPage = () => {
   const theme = useTheme();
 
   const styles = StyleSheet.create({
-    filterContainer: {
-      marginTop: "10%",
-      marginBottom: "10%",
-      width: "100%",
-      flexDirection: "row",
-      justifyContent: "space-around",
-    },
     selectDropdown: {
       flexBasis: "35%", // not correctly passed to CustomDropdown
     },
-/*
+    /*
     checkboxContainer: {
       flexBasis: "35%",
       flexDirection: "row",
@@ -73,7 +66,7 @@ const GamesPage = () => {
   return (
     <View style={[baseStyles.container, { justifyContent: "start" }]}>
       <Background />
-      <View style={styles.filterContainer}>
+      <View style={baseStyles.headerContainer}>
         <CustomDropdown
           label="Season"
           mode="outline"
@@ -86,16 +79,16 @@ const GamesPage = () => {
           style={styles.selectDropdown}
         />
         <CustomDropdown
-            label="Team"
-            mode="outline"
-            visible={showTeamDropdown}
-            showDropDown={() => setShowTeamDropdown(true)}
-            onDismiss={() => setShowTeamDropdown(false)}
-            value={team}
-            setValue={setTeam}
-            list={teamList}
-            style={styles.selectDropdown}
-          ></CustomDropdown>
+          label="Team"
+          mode="outline"
+          visible={showTeamDropdown}
+          showDropDown={() => setShowTeamDropdown(true)}
+          onDismiss={() => setShowTeamDropdown(false)}
+          value={team}
+          setValue={setTeam}
+          list={teamList}
+          style={styles.selectDropdown}
+        ></CustomDropdown>
       </View>
       <GamesDataTable />
     </View>
